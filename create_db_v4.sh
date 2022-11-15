@@ -9,6 +9,8 @@ if [ $# -eq 0 ]; then
     echo
     echo "For example: sh create_db.sh 1"
     echo
+    echo "Choose OPTION from below Lists:"
+    echo
     echo "1 for create database in MYSQL."
     echo "2 for taking dbdump in MYSQL."
     echo "3 for restoring db from dump in MYSQL."
@@ -86,13 +88,11 @@ else
     5)
         echo "*****Database Creation in HBase through phoenix*****"
         echo
-        read -p "Zookeeper Quorum:" ZOOKEEPER_QUORUM
-        echo
         read -p "DB Schema name:" HBASE_SCHEMA_NAME
         echo
         read -p "SQL file Path:" SQL_PATH
-        echo "CREATE SCHEMA IF NOT EXISTS "$HBASE_SCHEMA_NAME"; > /home/ec2-user/create_schema.sql"
-        ~/tdss/phoenix/bin/psql.py $ZOOKEEPER_QUORUM "$SQL_PATH"
+        echo "CREATE SCHEMA IF NOT EXISTS "$HBASE_SCHEMA_NAME";" > "$SQL_PATH"/create_schema.sql
+        ~/tdss/phoenix/bin/psql.py localhost "$SQL_PATH"
         echo "$HBASE_SCHEMA_NAME Created Successfully." 
         echo
         ;;
