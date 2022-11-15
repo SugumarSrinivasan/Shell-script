@@ -15,7 +15,7 @@ if [ $# -eq 0 ]; then
     echo "2 for taking dbdump in MYSQL."
     echo "3 for restoring db from dump in MYSQL."
     echo "4 for create database in Hive."
-    echo "5 for create schema in HBase through Phoenix."
+    echo "5 for create schema in HBase through Phoenix shell."
     echo "6 for execute migration script for hive and hbase."
     echo
     exit 1
