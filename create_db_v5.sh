@@ -91,8 +91,8 @@ else
         echo
         read -p "Database Name:" DATABASE_NAME
         echo
-        STATEMENT="UPDATE product_repos set root_context='"$HDFS_PATH"/"$DATABASE_NAME"/';"
-        mysql -h $DB_SERVER -u$DB_USER_NAME -p$DB_PASSWORD -e "$STATEMENT"
+        echo "UPDATE product_repos set root_context='"$HDFS_PATH"/"$DATABASE_NAME"/';" > /home/ec2-user/update_root_context.sql
+        mysql -h $DB_SERVER -u$DB_USER_NAME -p$DB_PASSWORD "$DATABASE_NAME" < /home/ec2-user/update_root_context.sql
         echo "root_context Updated Successfully."
         echo
         ;;  
