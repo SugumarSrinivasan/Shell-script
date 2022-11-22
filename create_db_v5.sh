@@ -112,7 +112,7 @@ else
         echo
         read -p "SQL file Path:" SQL_PATH
         echo "CREATE SCHEMA IF NOT EXISTS "$HBASE_SCHEMA_NAME";" > "$SQL_PATH"/create_schema.sql
-        ~/tdss/phoenix/bin/psql.py localhost "$SQL_PATH"
+        /home/ec2-user/tdss/phoenix/bin/psql.py localhost "$SQL_PATH"
         echo "$HBASE_SCHEMA_NAME Created Successfully." 
         echo
         ;;
