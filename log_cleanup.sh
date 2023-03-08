@@ -4,7 +4,7 @@
 #   Author: Sugumar Srinivasan                                                                             #
 #   NTID: ssrke                                                                                            #
 #   Creation Date: 03/08/2022                                                                              #
-#   Modified Date: 03/16/2022                                                                              #
+#   Modified Date: 03/08/2022                                                                              #
 #   Description: This shell script will clean_up the older files based on the user input(FILE_PATH, USER,  #
 #                GROUP, DURATION).                                                                         #
 #                                                                                                          #
