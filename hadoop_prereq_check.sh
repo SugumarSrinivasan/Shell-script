@@ -29,14 +29,11 @@ function check_selinux() {
    esac
 }
 function sudo_privilege_check() {
-   local msg="System: User should have sudo privilege"
-   #local sudo_check
-   #sudo_check=`sudo -v -u hadoop `
-   #if [ $((sudo_check)) -eq 0 ]; then
+   local msg="System: User: `echo $USER` is having sudo privilege"
    if groups | grep "\<wheel\>" &> /dev/null; then
        state "$msg" 0
    else
-       state "$msg. Actual: `groups`" 1
+       state "System: User: `echo $USER` don't have sudo privilege and the user must be the part of 'wheel' group to get sudo privilege. Actual: `groups`" 1
    fi
 }
 function check_thp_defrag() {
@@ -233,17 +230,17 @@ function chrony_installation_check() {
     if [ $? -eq 0 ]; then
        state "$msg" 0
     else
-       state "Chronyd Not Installed" 1
+       state "System: Chronyd Not Installed" 1
     fi
 }
 
 function python3_installation_check() {
-    local msg="System: Python3 Installed"
+    local msg="Python: Python3 Installed"
     python3 -V > /dev/null 2>&1
     if [ $? -eq 0 ]; then
        state "$msg" 0
     else
-       state "Python3 Not Installed" 1
+       state "Python: Python3 Not Installed" 1
     fi
 }
 
@@ -253,7 +250,7 @@ function krb5_server_check() {
     if [ $? -eq 0 ]; then
        state "$msg" 0
     else
-       state "Krb5 Server Not Installed" 1
+       state "System: Krb5 Server Not Installed" 1
     fi
 }
 
@@ -263,7 +260,7 @@ function krb5_workstation_check() {
     if [ $? -eq 0 ]; then
        state "$msg" 0
     else
-       state "Krb5 Workstation Not Installed" 1
+       state "System: Krb5 Workstation Not Installed" 1
     fi
 }
 echo -e "\n"
@@ -275,10 +272,10 @@ check_thp_defrag
 check_thp_enabled
 check_thp_grub
 check_swappiness
-check_ipv6
-check_java
-python3_installation_check
 chrony_installation_check
 krb5_server_check
 krb5_workstation_check
+check_ipv6
+check_java
+python3_installation_check
 echo -e "\n"
