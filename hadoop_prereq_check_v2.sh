@@ -219,11 +219,11 @@ function check_selinux() {
    esac
 }
 function sudo_privilege_check() {
-   local msg="System: User: `echo $user_account` is having sudo privilege"
+   local msg="System: User: $user_account is having sudo privilege"
    if groups $user_account | grep "\<wheel\>" &> /dev/null; then
        state "$msg" 0
    else
-       state "System: User: `echo $user_acount` don't have sudo privilege and the user must be the part of 'wheel' group to get sudo privilege. Actual: `groups`" 1
+       state "System: User: $user_acount don't have sudo privilege and the user must be the part of 'wheel' group to get sudo privilege. Actual: `groups $user_account`" 1
    fi
 }
 function check_thp_defrag() {
