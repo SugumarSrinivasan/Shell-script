@@ -9,7 +9,7 @@
 #                                                                                                  #
 #==================================================================================================#
 
-user_account="ec2-user"
+user_account="testusr1"
 
 function state() {
     local msg=$1
@@ -223,7 +223,7 @@ function sudo_privilege_check() {
    if groups $user_account | grep "\<wheel\>" &> /dev/null; then
        state "$msg" 0
    else
-       state "System: User: $user_acount don't have sudo privilege and the user must be the part of 'wheel' group to get sudo privilege. Actual: `groups $user_account`" 1
+       state "System: User: $user_account don't have sudo privilege and the user must be the part of 'wheel' group to get sudo privilege. Actual: `groups $user_account`" 1
    fi
 }
 
