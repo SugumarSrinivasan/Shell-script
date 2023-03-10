@@ -23,6 +23,8 @@ function state() {
     fi
 }
 
+SYSINFO_TITLE_WIDTH=14
+
 function print_label() {
     printf "%-${SYSINFO_TITLE_WIDTH}s %s\n" "$1:" "$2"
 }
