@@ -9,7 +9,7 @@
 #                GROUP, DURATION).                                                                         #
 #                                                                                                          #
 #   Syntax:  sh log_cleanup.sh <LOG_PATH> <USER> <GROUP> <DURATION>                                        #
-#   Example: sh log_cleanup.sh /allstate/log/ hadoop hadoop 90                                             #
+#   Example: sh log_cleanup.sh /var/log/hadoop/ hadoop hadoop 90                                           #
 #==========================================================================================================#
 
 LOG_PATH=$1
